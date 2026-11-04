@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{overflow:hidden;background:#090014;font-family:'Caveat',cursive}
+.scene{position:relative;width:100%;height:100vh;height:100dvh;overflow:hidden;background:radial-gradient(ellipse at 50% 65%,#32105c 0%,transparent 55%),linear-gradient(180deg,#080012,#16052e 60%,#090018)}
+.stars{position:absolute;inset:0}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:white;box-shadow:0 0 7px #dba5ff;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{from{opacity:.2;transform:scale(.7)}to{opacity:1;transform:scale(1.5)}}
+.shooting-star{position:absolute;width:110px;height:2px;background:linear-gradient(90deg,transparent,#fff,#c47aff);box-shadow:0 0 12px #c47aff;transform:rotate(-35deg);animation:shooting 3.5s linear infinite;opacity:0}
+@keyframes shooting{0%{transform:translate(0,0) rotate(-35deg);opacity:0}10%{opacity:1}35%{opacity:0}100%{transform:translate(-400px,300px) rotate(-35deg);opacity:0}}
+.flower-area{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;cursor:pointer;z-index:5;transition:.7s ease}
+.tulip{width:130px;height:220px;overflow:visible;filter:drop-shadow(0 0 15px #a64dff);animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.flower-area:hover .tulip{filter:drop-shadow(0 0 25px #e0a3ff)}
+.flower-area.hide{opacity:0;transform:translate(-50%,-70%) scale(.3);pointer-events:none}
+.letter-wrap{position:absolute;top:50%;left:50%;width:min(88%,430px);max-height:78%;transform:translate(-50%,-40%) scale(.7);opacity:0;pointer-events:none;transition:all 1s ease;z-index:10}
+.letter-wrap.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.letter{position:relative;background:#fff4fc;color:#52245f;padding:35px 25px;border-radius:5px;border:2px solid #e5b6fa;box-shadow:0 0 35px #a94cff66;max-height:78vh;max-height:78dvh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#c48bd9 transparent}
+.letter h2{font-family:'Great Vibes',cursive;text-align:center;font-size:36px;color:#9b4db5;margin-bottom:18px}
+.letter p{font-size:19px;line-height:1.45;white-space:pre-line}
+.lily{position:absolute;font-size:37px;filter:drop-shadow(0 0 8px #e5aaff);z-index:2}
+.lily.one{top:-25px;left:-12px}.lily.two{top:-25px;right:-12px}.lily.three{bottom:-22px;left:-12px}.lily.four{bottom:-22px;right:-12px}
+.close{display:block;margin:20px auto 0;border:1px solid #a96ac4;color:#763a8e;background:transparent;padding:8px 25px;border-radius:20px;font-family:inherit;font-size:18px;cursor:pointer}
+.close:hover{background:#f2d9fa}
+@media(max-width:380px){.letter{padding:28px 18px}.letter p{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="scene">
+  <div class="stars" id="stars"></div>
+  <div class="shooting-star" style="top:20%;left:85%"></div>
+  <div class="shooting-star" style="top:45%;left:100%;animation-delay:1.5s"></div>
+  <div class="shooting-star" style="top:8%;left:65%;animation-delay:2.5s"></div>
+
+  <div class="flower-area" id="flower" role="button" tabindex="0" aria-label="Open the letter">
+    <svg class="tulip" viewBox="0 0 130 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="petal" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f0c4ff"/>
+          <stop offset="50%" stop-color="#b44be8"/>
+          <stop offset="100%" stop-color="#58118f"/>
+        </linearGradient>
+        <linearGradient id="stem" x1="0" x2="1">
+          <stop stop-color="#326e42"/>
+          <stop offset="100%" stop-color="#8ad66d"/>
+        </linearGradient>
+      </defs>
+      <path d="M65 85 Q60 145 65 210" stroke="url(#stem)" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M64 160 Q10 105 23 165 Q43 185 64 160" fill="#55a94c"/>
+      <path d="M65 175 Q112 115 110 165 Q91 190 65 175" fill="#77c75d"/>
+      <path d="M30 82 Q20 38 43 12 Q53 0 65 30 Q77 0 87 12 Q110 38 100 82 Q80 112 65 100 Q45 112 30 82Z" fill="url(#petal)" stroke="#e6a5ff" stroke-width="2"/>
+      <path d="M43 75 Q40 30 65 14 Q75 47 65 92" fill="#c77aff" opacity=".75"/>
+      <path d="M65 30 Q88 44 85 82" stroke="#f1c6ff" stroke-width="2" fill="none" opacity=".7"/>
+      <path d="M31 82 Q65 110 100 82" stroke="#f0b6ff" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="letter-wrap" id="letter">
+    <span class="lily one">🌸</span>
+    <span class="lily two">🌺</span>
+    <span class="lily three">🌺</span>
+    <span class="lily four">🌸</span>
+    <div class="letter">
+      <h2>Hello!</h2>
+      <p>Hello! I hope malampasan mo lahat ng pinagdadaanan mo, those problems and more.
+
+Alam ko kung gaano kabigat yung pagiging bunso, last card eh, kaya damang-dama lahat ng pressure. Pero siguro ang ma-aadvise ko lang sa'yo is maging matibay ka, kasi for me, yun lang naman ang solution.
+
+Andun na tayo sa point na kahit family mo, or even me, hindi ka maintindihan, tapos magmumukha pang masama yung bunso, diba? HAHAHA.
+
+Pero one thing na nagawa ko para hindi ako maapektuhan sa mga sinasabi nila is maging matibay, you know? Like, kapag may sinasabi silang negative sa'kin, pasok sa tenga, labas sa kabila. HAHAHAHA.
+
+Kasi ang hirap kapag inintindi mo lahat, madadamay buong araw mo. Kapag salitaan man nila ng 10 minutes, labas sa kabila. May ilang hours ka pa sa isang araw para maibalik yung mood mo at maging masaya.
+
+Lahat naman ng ginagawa natin, para lang din naman sa kanila, para maging proud sila, right?
+
+Kung hindi mo man maabot yung expectations nila, that's fine. Meron ka pang napabilib na tao, meron ka pang napa-hanga, and the best part is, binigay mo yung best mo. Yun yung pinaka-the best doon.
+
+So start appreciating yourself and believe in yourself, ba kaya mo!
+
+I'm always proud of you, and I'm always here if you need me! 🤍</p>
+      <button class="close" id="close">Close ♡</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const stars = document.getElementById("stars");
+for (let i = 0; i < 110; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 3 + "s";
+  star.style.animationDuration = (1 + Math.random() * 3) + "s";
+  stars.appendChild(star);
+}
+
+const flower = document.getElementById("flower");
+const letter = document.getElementById("letter");
+const close = document.getElementById("close");
+
+function openLetter() {
+  flower.classList.add("hide");
+  setTimeout(() => letter.classList.add("show"), 450);
+}
+flower.addEventListener("click", openLetter);
+flower.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openLetter();
+  }
+});
+close.addEventListener("click", () => {
+  letter.classList.remove("show");
+  setTimeout(() => flower.classList.remove("hide"), 700);
+});
+</script>
+</body>
+</html>
